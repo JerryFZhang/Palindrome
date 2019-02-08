@@ -1,7 +1,8 @@
 # Audition Project
 ## Objective
 Create a simple application that:
-- Exposes a simple REST API that allows users to:
+
+Exposes a simple REST API that allows users to:
 - Allows users to submit/post messages
 - Lists received messages
 - Retrieves a specific message on demand, and determines if it is a palindrome.
