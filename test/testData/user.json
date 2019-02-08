@@ -1,0 +1,6 @@
+{
+    "userName": "jerryzhang", //optional
+    "email": "hi@fengwei.ca", //required
+    "userId": "1", //autogen
+    "password": "379er8yhfhjskdfyeuwi" //hashed with bcrypt
+}

@@ -1,0 +1,6 @@
+{
+    "id": "1", // automatically generated
+    "message": "This is a test message",
+    "userId": "1", // user's identifier
+    "posted": "19049302034" //JS time
+}
