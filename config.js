@@ -1,3 +1,3 @@
 module.exports.serverConfig = {
-    port: 3000,
+  dbAddress: 'mongodb://localhost:27017',
 }
