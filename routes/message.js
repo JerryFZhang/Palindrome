@@ -7,11 +7,46 @@ var serverConfig = require('../config.js').serverConfig
 
 /* GET one message */
 router.get('/', (req, res, next) => {
+  if (req.query.messageId) {
+    Message.findOne({
+      messageId: req.query.messageId
+    }, (err, message) => {
+      if (err) {
+        console.log('find messages error ', err)
+        res.status(500).send('unable to find message')
+      } else {
+        res.send({
+          _id: message._id,
+          postedAt: message.postedAt,
+          messageBody: message.messageBody
+        })
+      }
+    })
+  } else {
+    Message.find({}, (err, messages) => {
+      if (err) {
+        console.log('find messages error ', err)
+        res.status(500).send('unable to find message')
+      } else {
+        var returnedMessages = []
+        // console.log(messages)
+
+        _.forEach(messages, function (message, key) {
+          returnedMessages.push({
+            _id: message._id,
+            postedAt: message.postedAt,
+            messageBody: message.messageBody
+          })
+        })
+        res.send(returnedMessages)
+      }
+    })
+  }
 })
 
 
 /* Create new message */
-router.post('/:id', (req, res) => {
+router.post('/', (req, res) => {
   
 })
 
