@@ -47,7 +47,24 @@ router.get('/', (req, res, next) => {
 
 /* Create new message */
 router.post('/', (req, res) => {
-  
+  if (req.body.messageBody) {
+    var newMessage = {
+      messageBody: req.body.messageBody
+    }
+    Message.create(newMessage, function (err, message) {
+      if (err) {
+        console.log(err)
+        res.send(' create message failed').status(401)
+      } else {
+        res.send({
+          messageId: message._id,
+          messageBody: message.messageBody
+        })
+      }
+    })
+  } else {
+    res.send('insuffient info').status(401)
+  }
 })
 
 router.delete('/:id', (req, res) => {
