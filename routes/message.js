@@ -69,7 +69,24 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   console.log(req.params)
-
+  Message.findOneAndRemove({
+    _id: req.params.id
+  }, (err, message) => {
+    if (err) {
+      console.log('find messages error ', err)
+      res.status(500).send('unable to find message')
+    } else {
+      Message.deleteOne({
+        _id: req.params.id
+      }, (error, video) => {
+        if (error) {
+          res.send('failed')
+        } else {
+          res.send('success')
+        }
+      })
+    }
+  })
 })
 
 module.exports = router
