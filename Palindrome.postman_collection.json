@@ -31,13 +31,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/messages",
+					"raw": "localhost:3000/message",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"messages"
+						"message"
 					]
 				},
 				"description": "Retrive a list of messages from the server."
@@ -54,14 +54,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/message/1",
+					"raw": "localhost:3000/message/5c6e4002e38e3218d673b0f5",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"message",
-						"1"
+						"5c6e4002e38e3218d673b0f5"
 					]
 				},
 				"description": "Retrive a specific message from the server."
@@ -72,10 +72,17 @@
 			"name": "Post a Message",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"messageBody\":\"123\"\n}"
 				},
 				"url": {
 					"raw": "localhost:3000/message",
