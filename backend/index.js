@@ -5,13 +5,15 @@ var mongoose = require('mongoose')
 
 // Load server config for future deployment
 var serverConfig = require('./config.js').serverConfig
-const PORT = serverConfig.port || 3000
+const PORT = serverConfig.port || 4000
 var messages = require('./routes/message')
 
 var path = require('path')
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 
 // parse application/json
 app.use(bodyParser.json())
@@ -30,33 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/message', messages)
 
 app.get('/', (req, res) => {
-    res.send("Server initiated")
+  res.send("Server initiated")
 })
-
-//
-//// Get a specific message with the message id
-//app.get('/message/:id', (req, res) => {
-//    const id = req.params.id
-//    res.send("Here's the message with id: " + id)
-//})
-//
-//// Get a list of messages
-//app.get('/messages', (req, res) => {
-//    res.send("Here are all the messages.")
-//})
-//
-//// Post a message
-//app.post('/message', (req, res) => {
-//    const message = req.body
-//    res.send(message)
-//})
-//
-//// Delete a specific message
-//app.delete('/message/:id', (req, res) => {
-//    const id = req.params.id
-//    res.send("Deleted the message with id: " + id)
-//})
-
 
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))
 module.exports = app

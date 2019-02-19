@@ -5,41 +5,44 @@ var uniqid = require('uniqid')
 var _ = require('lodash')
 var serverConfig = require('../config.js').serverConfig
 
-/* GET one message */
-router.get('/:id', (req, res, next) => {
-  if (req.params.id) {
-    Message.findOne({messageId: req.query.messageId}, (err, message) => {
-      if (err) {
-        console.log('find messages error ', err)
-        res.status(500).send('unable to find message')
-      } else {
-        res.send({
+/* GET a list of messages */
+router.get('/', (req, res) => {
+  Message.find({}, (err, messages) => {
+    if (err) {
+      console.log('find messages error ', err)
+      res.status(500).send('unable to find message')
+    } else {
+      var returnedMessages = []
+      // console.log(messages)
+
+      _.forEach(messages, function (message, key) {
+        returnedMessages.push({
           _id: message._id,
           postedAt: message.postedAt,
           messageBody: message.messageBody
         })
-      }
-    })
-  } else {
-    Message.find({}, (err, messages) => {
-      if (err) {
-        console.log('find messages error ', err)
-        res.status(500).send('unable to find message')
-      } else {
-        var returnedMessages = []
-        // console.log(messages)
+      })
+      res.send(returnedMessages)
+    }
+  })
+})
 
-        _.forEach(messages, function (message, key) {
-          returnedMessages.push({
-            _id: message._id,
-            postedAt: message.postedAt,
-            messageBody: message.messageBody
-          })
-        })
-        res.send(returnedMessages)
-      }
-    })
-  }
+/* GET one message */
+router.get('/:id', (req, res, next) => {
+  Message.findOne({
+    messageId: req.query.messageId
+  }, (err, message) => {
+    if (err) {
+      console.log('find messages error ', err)
+      res.status(500).send('unable to find message')
+    } else {
+      res.send({
+        _id: message._id,
+        postedAt: message.postedAt,
+        messageBody: message.messageBody
+      })
+    }
+  })
 })
 
 
