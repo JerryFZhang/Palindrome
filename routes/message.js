@@ -6,11 +6,9 @@ var _ = require('lodash')
 var serverConfig = require('../config.js').serverConfig
 
 /* GET one message */
-router.get('/', (req, res, next) => {
-  if (req.query.messageId) {
-    Message.findOne({
-      messageId: req.query.messageId
-    }, (err, message) => {
+router.get('/:id', (req, res, next) => {
+  if (req.params.id) {
+    Message.findOne({messageId: req.query.messageId}, (err, message) => {
       if (err) {
         console.log('find messages error ', err)
         res.status(500).send('unable to find message')
