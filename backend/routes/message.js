@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
           messageBody: message.messageBody
         })
       })
-      res.send(returnedMessages)
+      res.send({"messages":returnedMessages})
     }
   })
 })

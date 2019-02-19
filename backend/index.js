@@ -2,6 +2,7 @@ var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
+var cors = require('cors')
 
 // Load server config for future deployment
 var serverConfig = require('./config.js').serverConfig
@@ -9,6 +10,13 @@ const PORT = serverConfig.port || 4000
 var messages = require('./routes/message')
 
 var path = require('path')
+
+// use it before all route definitions
+app.use(cors({
+  origin: 'http://localhost:3000'
+  // React App destination is on port 3000
+  // make this a config later
+}))
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
@@ -26,7 +34,6 @@ db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
   // we're connected!
 })
-
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/message', messages)
