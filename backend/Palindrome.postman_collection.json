@@ -6,22 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Render Homepage",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": ""
-				},
-				"description": "Asks the server for content needed to render the front page."
-			},
-			"response": []
-		},
-		{
 			"name": "Get Messages",
 			"request": {
 				"method": "GET",
@@ -108,14 +92,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/message/1",
+					"raw": "localhost:4000/message/5c6e1222742de31645aa446e",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"message",
-						"1"
+						"5c6e1222742de31645aa446e"
 					]
 				},
 				"description": "Delete a specific message from the server."
