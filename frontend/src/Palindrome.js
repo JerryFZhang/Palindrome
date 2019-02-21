@@ -3,16 +3,21 @@ import React from 'react';
 class Palindrome extends React.Component {
   constructor(props) {
     super(props)
-    this.obj = props.props
+    this.state = {
+      data: props.props,
+      palindrome: null
+    }
   }
-  
+
+  getPalindrome = (msg) => {
+    var str = msg.toLowerCase().replace(/[\W_]/g, '');
+    var reversed = str.split('').reverse().join('');
+   if (reversed === str) return "yes" 
+   else return "no"
+  }
 
   render() {
-    let component 
-    var lowRegStr = this.obj.toLowerCase().replace(/[\W_]/g, '');
-    var reverseStr = lowRegStr.split('').reverse().join('');
-   (reverseStr === lowRegStr) ? component = "yes" : component = "no"
-    return (<span>{component}</span>);
+    return (<span>{this.getPalindrome(this.state.data)}</span>);
   }
 }
 export default Palindrome;

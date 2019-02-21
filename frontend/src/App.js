@@ -17,9 +17,9 @@ class App extends Component {
   componentDidMount() {
     this.getData();
 
-    // Pull every minute
+    // Pull every .1s
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getData, 250);
+      let interval = setInterval(this.getData, 100);
       this.setState({ intervalIsSet: interval });
     }
 
@@ -107,7 +107,7 @@ class App extends Component {
             <tbody>
          {
            messages === undefined || messages.length <= 0  ? 'NO ENTRIES'
-            : messages.sort((a, b) => b.postedAt - a.postedAt).map((message, index)  => (
+            : messages.sort((a, b) => a.postedAt - b.postedAt).map((message, index)  => (
             <tr>
               <td>{index + 1}</td>
               <td>{message.messageBody}</td>
@@ -125,7 +125,7 @@ class App extends Component {
     </Table>
     <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
       <div className="input-group pl-md-5 pr-md-5 pb-3 pt-3">
-        <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" aria-label="Text input with segmented dropdown button" />
+        <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" />
         <div className="input-group-append">
           <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
         </div>
