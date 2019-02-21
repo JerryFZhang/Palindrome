@@ -1,5 +1,6 @@
 // /client/App.js
 import React, { Component } from 'react'
+import PopoverComp from './PopoverComp'
 import Moment from 'react-moment'
 import {ButtonGroup, Button, Table, Nav, Input} from 'reactstrap'
 
@@ -12,7 +13,6 @@ class App extends Component {
     isLoaded:null, 
     inputField:null
   };
-
 
   componentDidMount() {
     this.getData();
@@ -37,8 +37,14 @@ class App extends Component {
     }
   }
 
-  handleChange = (event) => {
+  _handleChange = (event) => {
     this.setState({inputField: event.target.value});
+  }
+
+  _handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.postMessage()
+    }
   }
 
   // fetch data from backend
@@ -81,7 +87,7 @@ class App extends Component {
       (error) => {console.err(`'${error}' happened!`); return {};
     });
   }
-
+ 
   render() {
       const messages  = this.state.data.messages;
       console.log(messages)
@@ -95,6 +101,7 @@ class App extends Component {
       {/* <th>Message ID</th> */}
       <th className="d-none d-md-block">Posted At</th>
       <th></th>
+      <th>Palindrome</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -105,12 +112,12 @@ class App extends Component {
             <tr>
               <td>{index + 1}</td>
               <td>{message.messageBody}</td>
-              {/* <td>{message._id}</td> */}
               <td className="d-none d-md-block"><Moment format='lll'>{ message.postedAt }</Moment></td>
               <td><Moment fromNow>{ message.postedAt }</Moment></td>
+              <td><PopoverComp props={message.messageBody}></PopoverComp></td>
               <td>
                 <ButtonGroup size="sm"> 
-                  <Button data-toggle="tooltip" data-placement="left" title="Tooltip on left" color="outline-warning" size="sm">?</Button> 
+                  
                   <Button  onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
                 </ButtonGroup>
               </td>
@@ -120,7 +127,7 @@ class App extends Component {
 </Table>
  <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
   <div className="input-group pl-5 pr-5 pb-3 pt-3">
-     <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this.handleChange}  className="form-control" aria-label="Text input with segmented dropdown button" />
+     <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" aria-label="Text input with segmented dropdown button" />
      <div className="input-group-append">
          <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
      </div>

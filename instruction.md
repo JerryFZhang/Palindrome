@@ -5,7 +5,7 @@ Create a simple application that:
 Exposes a simple REST API that allows users to:
 - **(Missing Frontend)** Allows users to submit/post messages 
 - **(Done)** Lists received messages
-- Retrieves a specific message on demand, and determines if it is a palindrome.
+- **(Done)** Retrieves a specific message on demand, and determines if it is a palindrome.
 - **(Missing Frontend)** Allows users to delete specific messages
 - **(In progress)** Provides a simple UI to interact with the service:
 - **(Done)** Shows the list of messages posted by the users
