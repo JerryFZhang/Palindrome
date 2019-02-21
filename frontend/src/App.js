@@ -1,6 +1,8 @@
 // /client/App.js
 import React, { Component } from 'react'
 import Moment from 'react-moment'
+import {ButtonGroup, Button, Table} from 'reactstrap'
+
 class App extends Component {
   // initialize
   state = {
@@ -51,19 +53,37 @@ class App extends Component {
       const messages  = this.state.data.messages;
       console.log(messages)
       return (
-      <div className='row pt-5'>
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Sorted</th>
+      <th>Message</th>
+      {/* <th>Message ID</th> */}
+      <th className="d-none d-md-block">Posted At</th>
+      <th></th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
          {
            messages === undefined || messages.length <= 0  ? 'NO ENTRIES'
-            : messages.map((message, index)  => (
-       <div className='col-xl-6 col-lg-6 col-md-12 card-group mb-3' key={index}>
-          #{index + 1}<br />
-          {message._id}<br />
-          {message.messageBody}<br />
-          Message time: <Moment format='lll'>{ message.postedAt }</Moment> <br />
-            <span className="badge badge-dark"><Moment fromNow>{ message.postedAt }</Moment></span><br /> <br />
-        </div>
+            : messages.sort((a, b) => a.postedAt - b.postedAt).map((message, index)  => (
+            <tr>
+              <td>{index + 1}</td>
+              <td>{message.messageBody}</td>
+              {/* <td>{message._id}</td> */}
+              <td className="d-none d-md-block"><Moment format='lll'>{ message.postedAt }</Moment></td>
+              <td><Moment fromNow>{ message.postedAt }</Moment></td>
+              <td>
+                <ButtonGroup size="sm"> 
+                  <Button color="outline-warning" size="sm">?</Button> 
+                  <Button color="outline-danger" size="sm">X</Button>
+                </ButtonGroup>
+              </td>
+            </tr>
         ))}
-    </div>
+  </tbody>
+</Table>
    );
   }
 }
