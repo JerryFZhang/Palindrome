@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
 var Message = require('../models/Message.js')
-var uniqid = require('uniqid')
 var _ = require('lodash')
-var serverConfig = require('../config.js').serverConfig
 
 /* GET a list of messages */
 router.get('/', (req, res) => {
@@ -22,7 +20,9 @@ router.get('/', (req, res) => {
           messageBody: message.messageBody
         })
       })
-      res.send({"messages":returnedMessages})
+      res.send({
+        'messages': returnedMessages
+      })
     }
   })
 })
@@ -44,7 +44,6 @@ router.get('/:id', (req, res, next) => {
     }
   })
 })
-
 
 /* Create new message */
 router.post('/', (req, res) => {

@@ -10,7 +10,7 @@ class App extends Component {
     data: {},
     browserLanguage: null,
     intervalIsSet: false,
-    isLoaded:null, 
+    isLoaded:null,
     inputField:''
   };
 
@@ -87,25 +87,24 @@ class App extends Component {
       (error) => {console.err(`'${error}' happened!`); return {};
     });
   }
- 
+
   render() {
       const messages  = this.state.data.messages;
       console.log(messages)
       return (
         <div>
-<Table responsive>
-  <thead>
-    <tr>
-      <th>Sorted</th>
-      <th>Message</th>
-      {/* <th>Message ID</th> */}
-      <th className="d-none d-md-block">Posted At</th>
-      <th></th>
-      <th>Palindrome</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Sorted</th>
+                <th>Message</th>
+                <th className="d-none d-md-block">Posted At</th>
+                <th></th>
+                <th>Palindrome</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
          {
            messages === undefined || messages.length <= 0  ? 'NO ENTRIES'
             : messages.sort((a, b) => b.postedAt - a.postedAt).map((message, index)  => (
@@ -116,22 +115,22 @@ class App extends Component {
               <td><Moment fromNow>{ message.postedAt }</Moment></td>
               <td><Palindrome props={message.messageBody}></Palindrome></td>
               <td>
-                <ButtonGroup size="sm"> 
+                <ButtonGroup size="sm">
                   <Button onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
                 </ButtonGroup>
               </td>
             </tr>
         ))}
-  </tbody>
-</Table>
- <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
-  <div className="input-group pl-md-5 pr-md-5 pb-3 pt-3">
-     <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" aria-label="Text input with segmented dropdown button" />
-     <div className="input-group-append">
-         <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
-     </div>
-  </div>
-  </Nav>
+      </tbody>
+    </Table>
+    <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
+      <div className="input-group pl-md-5 pr-md-5 pb-3 pt-3">
+        <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" aria-label="Text input with segmented dropdown button" />
+        <div className="input-group-append">
+          <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
+        </div>
+      </div>
+    </Nav>
   </div>
    );
   }

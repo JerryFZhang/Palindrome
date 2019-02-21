@@ -28,14 +28,14 @@ var db = mongoose.connection
 // handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
-  // we're connected!
+  // Connected
 })
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/message', messages)
 
 app.get('/', (req, res) => {
-  res.send("Server initiated")
+  res.send('Server initiated')
 })
 
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))

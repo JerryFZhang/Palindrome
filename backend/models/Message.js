@@ -1,5 +1,4 @@
 var mongoose = require('mongoose')
-var Schema = mongoose.Schema
 
 var MessageSchema = new mongoose.Schema({
   messageBody: {
@@ -8,7 +7,6 @@ var MessageSchema = new mongoose.Schema({
   },
   postedAt: Number
 })
-
 
 MessageSchema.pre('save', function (next) {
   var Message = this
