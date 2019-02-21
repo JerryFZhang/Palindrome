@@ -12,11 +12,7 @@ var messages = require('./routes/message')
 var path = require('path')
 
 // use it before all route definitions
-app.use(cors({
-  origin: serverConfig.CORS
-  // React App destination is on port 3000
-  // make this a config later
-}))
+app.use(cors())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
