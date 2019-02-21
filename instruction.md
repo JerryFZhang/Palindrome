@@ -11,11 +11,11 @@ Exposes a simple REST API that allows users to:
 - **(Done)** Shows the list of messages posted by the users
 - **(Done)** Allows to post new messages
 - **(Done)** Allows to select a given message to see extra details
-- **(Extra points)** The application is deployed to a Cloud Provider (AWS is preferred)
-- A Compute instance is provisioned programmatically
-- Application can be reached via public DNS record
-- **(Extra points)** Functional and System Tests
-- **(Extra points)** Application is deployed in a container
+- **(Done)** The application is deployed to a Cloud Provider (AWS is preferred)
+- **(Done)** A Compute instance is provisioned programmatically
+- **(Done)** Application can be reached via public DNS record
+<del>- **(Extra points)** Functional and System Tests</del>
+<del>- **(Extra points)** Application is deployed in a container</del>
 
 ## Additional Info / Restrictions
 - Extra information can be requested by e-mail.
