@@ -11,7 +11,7 @@ class App extends Component {
     browserLanguage: null,
     intervalIsSet: false,
     isLoaded:null, 
-    inputField:null
+    inputField:''
   };
 
   componentDidMount() {
@@ -19,7 +19,7 @@ class App extends Component {
 
     // Pull every minute
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getData, 100);
+      let interval = setInterval(this.getData, 250);
       this.setState({ intervalIsSet: interval });
     }
 
@@ -54,7 +54,7 @@ class App extends Component {
           'Accept': 'application/json',
       }
     }
-    fetch(baseURL + 'message', requestOptions)
+    fetch(baseURL + 'message/', requestOptions)
     .then((res) => res.json(),
           (error) => {console.err(`'${error}' happened!`); return {};})
     .then((res) => this.setState({ data: res, isLoaded: true }),
@@ -65,7 +65,7 @@ class App extends Component {
     const requestOptions = {
       method: 'DELETE'
     };
-    fetch(baseURL + '/message/' + messageId, requestOptions)
+    fetch(baseURL + 'message/' + messageId, requestOptions)
     .then((res) => console.log(res),
           (error) => {console.err(`'${error}' happened!`); return {};
     });
@@ -82,7 +82,7 @@ class App extends Component {
         messageBody: this.state.inputField,
       })
     };
-    fetch(baseURL + '/message/', requestOptions)
+    fetch(baseURL + 'message/', requestOptions)
     .then((res) =>this.setState({ inputField: ""}),
       (error) => {console.err(`'${error}' happened!`); return {};
     });
