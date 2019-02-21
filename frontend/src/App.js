@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Palindrome from './Palindrome'
 import Moment from 'react-moment'
 import {ButtonGroup, Button, Table, Nav, Input} from 'reactstrap'
-
+const baseURL = 'http://localhost:4000/'
 class App extends Component {
   // initialize
   state = {
@@ -54,7 +54,7 @@ class App extends Component {
           'Accept': 'application/json',
       }
     }
-    fetch('http://localhost:4000/message', requestOptions)
+    fetch(baseURL + 'message', requestOptions)
     .then((res) => res.json(),
           (error) => {console.err(`'${error}' happened!`); return {};})
     .then((res) => this.setState({ data: res, isLoaded: true }),
@@ -65,7 +65,7 @@ class App extends Component {
     const requestOptions = {
       method: 'DELETE'
     };
-    fetch("http://localhost:4000/message/" + messageId, requestOptions)
+    fetch(baseURL + '/message/' + messageId, requestOptions)
     .then((res) => console.log(res),
           (error) => {console.err(`'${error}' happened!`); return {};
     });
@@ -82,7 +82,7 @@ class App extends Component {
         messageBody: this.state.inputField,
       })
     };
-    fetch('http://localhost:4000/message/', requestOptions)
+    fetch(baseURL + '/message/', requestOptions)
     .then((res) =>this.setState({ inputField: ""}),
       (error) => {console.err(`'${error}' happened!`); return {};
     });
@@ -125,7 +125,7 @@ class App extends Component {
   </tbody>
 </Table>
  <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
-  <div className="input-group pl-5 pr-5 pb-3 pt-3">
+  <div className="input-group pl-md-5 pr-md-5 pb-3 pt-3">
      <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" aria-label="Text input with segmented dropdown button" />
      <div className="input-group-append">
          <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
