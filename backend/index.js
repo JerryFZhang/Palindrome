@@ -3,12 +3,9 @@ var app = express()
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 var cors = require('cors')
-
-// Load server config for future deployment
 var serverConfig = require('./config.js').serverConfig
 const PORT = serverConfig.port || 4000
 var messages = require('./routes/message')
-
 var path = require('path')
 
 // use it before all route definitions
@@ -22,9 +19,9 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json())
 
+// DB connection
 mongoose.connect(serverConfig.dbAddress)
 var db = mongoose.connection
-
 // handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
@@ -32,10 +29,13 @@ db.once('open', function () {
 })
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Router
 app.use('/message', messages)
 
+
 app.get('/', (req, res) => {
-  res.send('Server initiated')
+  res.send('Server is up')
 })
 
 app.listen(PORT, () => console.log(`App Started on Port ${PORT}`))

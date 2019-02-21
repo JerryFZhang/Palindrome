@@ -37,10 +37,12 @@ class App extends Component {
     }
   }
 
+  // keep track of the input field
   _handleChange = (event) => {
     this.setState({inputField: event.target.value});
   }
 
+  // handle keyboard "enter"
   _handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       this.postMessage()
@@ -61,6 +63,7 @@ class App extends Component {
           (error) => this.setState({ isLoaded: true, error}));
   };
 
+  // Send DELETE request to backend
   deleteMessage = messageId => {
     const requestOptions = {
       method: 'DELETE'
@@ -71,6 +74,7 @@ class App extends Component {
     });
   }
 
+  // Send POST request to backend
   postMessage = () => {
     const requestOptions = {
       method: 'POST',
