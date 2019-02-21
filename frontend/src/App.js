@@ -49,6 +49,16 @@ class App extends Component {
           (error) => this.setState({ isLoaded: true, error}));
   };
 
+  deleteMessage = messageId => {
+    const requestOptions = {
+      method: 'DELETE'
+    };
+    fetch("http://localhost:4000/message/" + messageId, requestOptions)
+    .then((res) => console.log(res),
+          (error) => {console.err(`'${error}' happened!`); return {};
+    });
+  }
+
   render() {
       const messages  = this.state.data.messages;
       console.log(messages)
@@ -76,8 +86,8 @@ class App extends Component {
               <td><Moment fromNow>{ message.postedAt }</Moment></td>
               <td>
                 <ButtonGroup size="sm"> 
-                  <Button color="outline-warning" size="sm">?</Button> 
-                  <Button color="outline-danger" size="sm">X</Button>
+                  <Button data-toggle="tooltip" data-placement="left" title="Tooltip on left" color="outline-warning" size="sm">?</Button> 
+                  <Button  onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
                 </ButtonGroup>
               </td>
             </tr>
