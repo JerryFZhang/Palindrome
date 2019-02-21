@@ -15,11 +15,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/message",
+					"raw": "45.33.73.115:4000/message",
 					"host": [
-						"localhost"
+						"45",
+						"33",
+						"73",
+						"115"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"message"
 					]
@@ -38,11 +41,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/message/5c6e4002e38e3218d673b0f5",
+					"raw": "45.33.73.115:4000/message/5c6e4002e38e3218d673b0f5",
 					"host": [
-						"localhost"
+						"45",
+						"33",
+						"73",
+						"115"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"message",
 						"5c6e4002e38e3218d673b0f5"
@@ -66,14 +72,17 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"messageBody\":\"123\"\n}"
+					"raw": "{\n\t\"messageBody\":\"this is another message\"\n}"
 				},
 				"url": {
-					"raw": "localhost:3000/message",
+					"raw": "45.33.73.115:4000/message",
 					"host": [
-						"localhost"
+						"45",
+						"33",
+						"73",
+						"115"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"message"
 					]
@@ -92,9 +101,12 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:4000/message/5c6e1222742de31645aa446e",
+					"raw": "45.33.73.115:4000/message/5c6e1222742de31645aa446e",
 					"host": [
-						"localhost"
+						"45",
+						"33",
+						"73",
+						"115"
 					],
 					"port": "4000",
 					"path": [

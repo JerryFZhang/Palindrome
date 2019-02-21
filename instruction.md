@@ -14,8 +14,8 @@ Exposes a simple REST API that allows users to:
 - **(Done)** The application is deployed to a Cloud Provider (AWS is preferred)
 - **(Done)** A Compute instance is provisioned programmatically
 - **(Done)** Application can be reached via public DNS record
-<del>- **(Extra points)** Functional and System Tests</del>
-<del>- **(Extra points)** Application is deployed in a container</del>
+- <del>**(Extra points)** Functional and System Tests</del>
+- <del>**(Extra points)** Application is deployed in a container</del>
 
 ## Additional Info / Restrictions
 - Extra information can be requested by e-mail.
@@ -25,13 +25,13 @@ Exposes a simple REST API that allows users to:
 
 ## Submission
 Code should be committed to a public GitHub/Bitbucket repository:
-- The repo includes service, UI, and provisioning code.
+- **(Done)** The repo includes service, UI, and provisioning code.
 - README.md Includes:
-- Brief description of the implementation architecture.
-- Sequence diagram of the use cases' interactions.
-- How to: build, deploy and access the app.
-- REST API documentation.
-A URI to the app should be provided.
+- **(Done)** Brief description of the implementation architecture.
+- **(Done)** Sequence diagram of the use cases' interactions.
+- **(Done)** How to: build, deploy and access the app.
+- **(Done)** REST API documentation.
+- **(Done)** A URI to the app should be provided.
 
 Be prepared to discuss the architectural design and implementation details of your project.
 
