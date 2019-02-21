@@ -1,7 +1,7 @@
 // /client/App.js
 import React, { Component } from 'react'
 import Moment from 'react-moment'
-import {ButtonGroup, Button, Table} from 'reactstrap'
+import {ButtonGroup, Button, Table, Nav, Input} from 'reactstrap'
 
 class App extends Component {
   // initialize
@@ -9,7 +9,8 @@ class App extends Component {
     data: {},
     browserLanguage: null,
     intervalIsSet: false,
-    isLoaded:null
+    isLoaded:null, 
+    inputField:null
   };
 
 
@@ -36,13 +37,18 @@ class App extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({inputField: event.target.value});
+  }
+
   // fetch data from backend
   getData = () => {
-    fetch('http://localhost:4000/message', {
-        headers: {
-            'Accept': 'application/json',
-        },
-    })
+    const requestOptions = {
+      headers: {
+          'Accept': 'application/json',
+      }
+    }
+    fetch('http://localhost:4000/message', requestOptions)
     .then((res) => res.json(),
           (error) => {console.err(`'${error}' happened!`); return {};})
     .then((res) => this.setState({ data: res, isLoaded: true }),
@@ -59,10 +65,28 @@ class App extends Component {
     });
   }
 
+  postMessage = () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messageBody: this.state.inputField,
+      })
+    };
+    fetch('http://localhost:4000/message/', requestOptions)
+    .then((res) => console.log(res),
+      (error) => {console.err(`'${error}' happened!`); return {};
+    });
+  }
+
   render() {
       const messages  = this.state.data.messages;
       console.log(messages)
       return (
+        <div>
 <Table responsive>
   <thead>
     <tr>
@@ -94,6 +118,15 @@ class App extends Component {
         ))}
   </tbody>
 </Table>
+ <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
+  <div className="input-group pl-5 pr-5 pb-3 pt-3">
+     <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this.handleChange}  className="form-control" aria-label="Text input with segmented dropdown button" />
+     <div className="input-group-append">
+         <Button onClick={() => { this.postMessage()} }type="button" color="primary" >Post</Button>
+     </div>
+  </div>
+  </Nav>
+  </div>
    );
   }
 }
