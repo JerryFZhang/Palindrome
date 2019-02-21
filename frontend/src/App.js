@@ -1,6 +1,6 @@
 // /client/App.js
 import React, { Component } from 'react'
-import PopoverComp from './PopoverComp'
+import Palindrome from './Palindrome'
 import Moment from 'react-moment'
 import {ButtonGroup, Button, Table, Nav, Input} from 'reactstrap'
 
@@ -114,7 +114,7 @@ class App extends Component {
               <td>{message.messageBody}</td>
               <td className="d-none d-md-block"><Moment format='lll'>{ message.postedAt }</Moment></td>
               <td><Moment fromNow>{ message.postedAt }</Moment></td>
-              <td><PopoverComp props={message.messageBody}></PopoverComp></td>
+              <td><Palindrome props={message.messageBody}></Palindrome></td>
               <td>
                 <ButtonGroup size="sm"> 
                   

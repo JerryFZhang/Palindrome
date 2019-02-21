@@ -1,10 +1,6 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 import React from 'react';
-import { Button } from 'reactstrap';
-import Popup from 'react-popup';
-
-
-class PopoverComp extends React.Component {
+class Palindrome extends React.Component {
   constructor(props) {
     super(props)
     this.obj = props.props
@@ -19,4 +15,4 @@ class PopoverComp extends React.Component {
     return (<span>{component}</span>);
   }
 }
-export default PopoverComp;
+export default Palindrome;
