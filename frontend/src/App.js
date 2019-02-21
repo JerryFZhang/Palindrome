@@ -83,7 +83,7 @@ class App extends Component {
       })
     };
     fetch('http://localhost:4000/message/', requestOptions)
-    .then((res) => this.state.inputField = "",
+    .then((res) =>this.setState({ inputField: ""}),
       (error) => {console.err(`'${error}' happened!`); return {};
     });
   }
@@ -108,7 +108,7 @@ class App extends Component {
   <tbody>
          {
            messages === undefined || messages.length <= 0  ? 'NO ENTRIES'
-            : messages.sort((a, b) => a.postedAt - b.postedAt).map((message, index)  => (
+            : messages.sort((a, b) => b.postedAt - a.postedAt).map((message, index)  => (
             <tr>
               <td>{index + 1}</td>
               <td>{message.messageBody}</td>
