@@ -13,7 +13,7 @@ var path = require('path')
 
 // use it before all route definitions
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: serverConfig.CORS
   // React App destination is on port 3000
   // make this a config later
 }))
