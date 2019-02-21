@@ -83,7 +83,7 @@ class App extends Component {
       })
     };
     fetch('http://localhost:4000/message/', requestOptions)
-    .then((res) => console.log(res),
+    .then((res) => this.state.inputField = "",
       (error) => {console.err(`'${error}' happened!`); return {};
     });
   }
@@ -117,8 +117,7 @@ class App extends Component {
               <td><Palindrome props={message.messageBody}></Palindrome></td>
               <td>
                 <ButtonGroup size="sm"> 
-                  
-                  <Button  onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
+                  <Button onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
                 </ButtonGroup>
               </td>
             </tr>
