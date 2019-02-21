@@ -75,7 +75,7 @@ router.delete('/:id', (req, res) => {
       console.log('Delete messages error ', err)
       res.status(500).send('Unable to delete a message')
     } else {
-          res.send('success')
+      res.send('success')
     }
   })
 })
