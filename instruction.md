@@ -3,13 +3,13 @@
 Create a simple application that:
 
 Exposes a simple REST API that allows users to:
-- **(Missing Frontend)** Allows users to submit/post messages 
+- **(Done)** Allows users to submit/post messages 
 - **(Done)** Lists received messages
 - **(Done)** Retrieves a specific message on demand, and determines if it is a palindrome.
-- **(Missing Frontend)** Allows users to delete specific messages
-- **(In progress)** Provides a simple UI to interact with the service:
+- **(Done)** Allows users to delete specific messages
+- **(Done)** Provides a simple UI to interact with the service:
 - **(Done)** Shows the list of messages posted by the users
-- **(Missing Frontend)** Allows to post new messages
+- **(Done)** Allows to post new messages
 - **(Done)** Allows to select a given message to see extra details
 - **(Extra points)** The application is deployed to a Cloud Provider (AWS is preferred)
 - A Compute instance is provisioned programmatically
