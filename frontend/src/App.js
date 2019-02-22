@@ -109,24 +109,24 @@ class App extends Component {
               </tr>
             </thead>
             <tbody>
-         {
+          {
            messages === undefined || messages.length <= 0  ? 'NO ENTRIES'
-            : messages.sort((a, b) => a.postedAt - b.postedAt).map((message, index)  => (
-            <tr>
-              <td>{index + 1}</td>
+            : messages.sort((a, b) => a.postedAt - b.postedAt).map((message, key)  => (
+            <tr key={key}>
+              <td>{key + 1}</td>
               <td>{message.messageBody}</td>
               <td className="d-none d-md-block"><Moment format='lll'>{ message.postedAt }</Moment></td>
               <td><Moment fromNow>{ message.postedAt }</Moment></td>
               <td><Palindrome props={message.messageBody}></Palindrome></td>
               <td>
                 <ButtonGroup size="sm">
-                  <Button onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">X</Button>
+                  <Button onClick={() => { this.deleteMessage(message._id) }} color="outline-danger" size="sm">x</Button>
                 </ButtonGroup>
               </td>
             </tr>
         ))}
       </tbody>
-    </Table>
+      </Table>
     <Nav className="navbar navbar-light bg-light shadow-sm fixed-bottom navbar-expand w-100">
       <div className="input-group pl-md-5 pr-md-5 pb-3 pt-3">
         <Input type="text" placeholder="Type your message here ..." value={this.state.inputField} onChange={this._handleChange} onKeyPress={this._handleKeyPress} className="form-control" />
